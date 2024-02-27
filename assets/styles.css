@@ -1,0 +1,629 @@
+/***** MAIN ELEMENTS *****/
+/* 
+COLORS
+0C356A
+0174BE
+FFC436
+FFF0CE
+
+ICONS
+https://www.flaticon.com/authors/smashicons
+*/
+
+/* Importing Montserrat font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+/* Basic styles for the body element */
+body {
+  background-color: #f4f4f4;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+/* Styles for header and footer with shared properties */
+header,
+footer {
+  background-color: #0c356a;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer {
+  margin-top: 25px;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+/* Paragraph text styling */
+p {
+  line-height: 1.5;
+}
+
+/* Smooth scrolling effect for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/***** NAVBAR *****/
+/* DEFAULT STYLES */
+.nav-menu {
+  text-align: center;
+}
+
+/* Style for the navigation list */
+.nav-list {
+  list-style-type: none; /* Removes default list styling */
+  padding: 0; /* Removes default padding */
+}
+
+/* Hidden container for 'close' button in mobile view */
+.nav-list .close-container {
+  display: none; /* Hidden by default */
+  order: -1; /* Ensures it appears first if made visible */
+}
+
+.nav-list li {
+  display: inline-block; /* Displays items in a line */
+}
+
+/* Style for navigation links */
+.nav-list li a {
+  color: white;
+  margin: 0 10px;
+  padding: 5px 10px; /* Padding for clickable area */
+  text-decoration: none;
+}
+
+.nav-list li a:hover {
+  text-decoration: underline; /* Underlines on hover */
+}
+
+/* MOBILE NAV BAR SETTINGS */
+.menu-toggle {
+  cursor: pointer; /* Changes cursor to pointer */
+  display: none; /* Hidden by default */
+  flex-direction: column; /* Stacks the bars vertically */
+  height: 25px;
+  justify-content: space-between;
+  margin: auto; /* Center the toggle */
+}
+
+.menu-toggle .bar {
+  background-color: #0c356a;
+  border-radius: 2px;
+  height: 3px;
+  width: 25px;
+}
+
+@media screen and (max-width: 700px) {
+  .menu-toggle {
+    display: flex; /* Display the menu toggle in mobile view */
+  }
+
+  .nav-list {
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none; /* Hidden by default, shown when active */
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 80px;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 10; /* Ensures it's above other content */
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .close-container a {
+    display: inline-block; /* Display the close button */
+    font-size: 24px; /* Increase font size for visibility */
+    margin-top: 10px;
+  }
+
+  .menu-toggle.active ~ .close-container {
+    display: block; /* Show the close button when menu is active */
+  }
+}
+
+/***** WELCOME SECTION *****/
+.slideshow-container {
+  height: 600px; /* Fixed height */
+  margin: 20px auto;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden; /* Hides overflowed content */
+}
+
+.slideshow-container img {
+  height: 100%; /* Full height of the container */
+  object-fit: cover;
+  width: 100%; /* Full width of the container */
+}
+
+.slide {
+  display: none; /* Hidden initially, displayed through JS */
+}
+
+img {
+  height: auto; /* Maintains aspect ratio */
+  width: 100%;
+}
+
+/* Fade animation for the slideshow */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+/* Keyframes for the fade animation */
+@keyframes fade {
+  from {
+    opacity: 0.4; /* Starting with lower opacity */
+  }
+  to {
+    opacity: 1; /* Fading to full opacity */
+  }
+}
+
+.welcome-content {
+  position: relative;
+}
+
+.welcome-description {
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 20px;
+  border-radius: 8px;
+  color: #fff;
+  max-width: 30%;
+  padding: 10px;
+  position: absolute; /* This positions the div over the slideshow */
+  right: 20px;
+  transition: all 0.3s ease;
+}
+
+.welcome-description h2 {
+  margin-top: 0; /* Removes default margin */
+}
+
+/* Styles for screens 960px and below */
+@media (max-width: 960px) {
+  .welcome-description {
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 1rem 0;
+    position: static; /* Normal flow, not absolute */
+    text-align: center;
+  }
+
+  .slideshow-container {
+    height: 400px; /* Reduced height for smaller screens */
+  }
+}
+/* Styles for screens 650px and below */
+@media (max-width: 650px) {
+  .slideshow-container {
+    height: 300px;
+  }
+}
+
+/***** AVAILABLE TUTORS SECTION *****/
+#available-tutors {
+  padding-top: 25px;
+}
+
+/* Flex container for tutor cards */
+.tutors {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of items */
+  justify-content: center;
+  padding: 20px;
+}
+
+.tutor-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  height: auto;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  text-align: center;
+  transition: transform 0.2s;
+  width: 300px;
+}
+
+.tutor-card img {
+  border-radius: 50%;
+  height: 150px;
+  margin: 0 auto;
+  object-fit: cover;
+  width: 150px;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* Hidden by default */
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* High z-index to be on top */
+}
+
+/***** REQUEST SESSION WITH TUTOR *****/
+.modal-content {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 10% auto;
+  padding: 20px;
+  width: 20%;
+}
+
+.close-button {
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+}
+
+/***** ABOUT SECTION *****/
+.about-service {
+  align-items: center;
+  background-color: #0174be;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.about-feature {
+  align-items: center;
+  display: flex;
+  flex-basis: 18%;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 2%;
+  text-align: center;
+}
+
+/* Media query for screens between 681px and 1400px */
+@media (min-width: 681px) and (max-width: 1400px) {
+  .about-service {
+    justify-content: space-around;
+    padding: 20px;
+    width: 100%; /* Take the full width of the viewport */
+  }
+
+  .about-feature {
+    flex-basis: 30%; /* Adjusted flex-basis to give more width */
+    margin: 0;
+  }
+
+  .about-feature p {
+    max-width: 90%; /* Allow the text to occupy more width */
+  }
+}
+
+@media (max-width: 680px) {
+  .about-service {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  @media (max-width: 680px) {
+    .about-feature {
+      flex-basis: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  .about-feature {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.about-feature img {
+  height: 75px;
+  margin-bottom: 10px;
+  width: 75px;
+}
+
+.about-feature p {
+  max-width: 80%;
+  text-align: center;
+}
+
+.about {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.about img {
+  max-width: 400px;
+  height: auto;
+  width: 80%;
+}
+
+.about-content {
+  align-items: center;
+  display: flex;
+  margin: 20px 0;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.about-description {
+  padding-left: 100px;
+  width: 55%;
+}
+
+@media (max-width: 860px) {
+  .about-content {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-description {
+    margin-top: 20px;
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
+/***** BENEFITS SECTION *****/
+.benefits {
+  background-image: linear-gradient(
+      to right,
+      #ffffff,
+      rgba(255, 255, 255, 0) 200%
+    ),
+    url("../assets/images/benefits_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 20px;
+}
+
+.benefits-section {
+  width: 50%;
+}
+
+.benefits-section h3 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.benefits-section p {
+  align-items: center;
+  color: #666;
+  display: flex;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.benefits-section img {
+  height: auto;
+  margin-right: 15px;
+  width: 25px;
+}
+
+.benefit-item {
+  align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 960px) {
+  .benefits {
+    background-image: none;
+    background-color: #0174be;
+    color: #fff;
+    max-width: 100%;
+  }
+
+  .benefits-section {
+    padding: 10px;
+    width: 97%;
+  }
+
+  .benefits-section h3 {
+    color: #fff;
+    font-size: 28px;
+  }
+
+  .benefits-section p {
+    color: #fff;
+    font-size: 14px;
+  }
+}
+
+/***** REGISTRATION PAGE *****/
+.registration-form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  max-width: 400px;
+  padding: 20px;
+  width: 100%;
+}
+
+.registration-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"],
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 80%;
+}
+
+.registration-form input[type="submit"] {
+  background-color: #0174be;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.registration-form input[type="submit"]:hover {
+  background-color: #015a95;
+}
+
+/***** THANK-YOU FOR REGISTERING PAGE *****/
+.button {
+  background-color: #0c356a;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0f4d92;
+}
+
+/***** LOGIN PAGE *****/
+.login-header {
+  text-align: center;
+}
+
+.login-form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  max-width: 400px;
+  padding: 20px;
+  width: 100%;
+}
+
+.login-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.login-form input[type="submit"] {
+  background-color: #0174be;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+/***** DASHBOARD PAGE *****/
+.profile-container {
+  align-items: flex-start;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 1000px;
+  height: 300px;
+  margin: auto;
+  padding: 20px;
+}
+
+.profile-photo-section {
+  text-align: center;
+}
+
+.profile-photo-section img {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+#profile-photo-upload,
+#upload-photo-button {
+  margin-top: 50px;
+}
+
+.bio-instruction {
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.bio-section {
+  border: 1px solid #ccc;
+  height: 275px;
+  max-width: 600px;
+  margin-left: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+.bio-section textarea {
+  height: 200px;
+  width: 100%;
+}
+
+#char-count {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+#char-count.over-limit {
+  color: red;
+}
+
+.video-call-link {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.video-call-link input {
+  padding: 10px;
+  width: 50%;
+}
+
+#go-live-btn,
+.logout input[type="submit"] {
+  background-color: #0174be;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 20px;
+}

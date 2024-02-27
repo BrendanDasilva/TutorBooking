@@ -1,0 +1,10 @@
+********************************************************************
+**************************     NOTES     ***************************
+********************************************************************
+
+                            ***** Extras *****
+Logging and Tracking: Session logs
+• Every tutoring request (with student's name, email, tutor's name, and timestamp) must be logged.
+• Tutors should be able to view a list of all their past and current tutoring requests in their dashboard.
+
+http://localhost:8888/phpMyAdmin5/
